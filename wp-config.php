@@ -19,17 +19,23 @@
  */
 
 // ** Database settings - You can get this info from your web host ** //
+// En Azure se leen de las variables de entorno (App Settings); en XAMPP se usan los valores por defecto.
 /** The name of the database for WordPress */
-define( 'DB_NAME', 'wordpress-new' );
+define( 'DB_NAME', getenv( 'DB_NAME' ) ?: 'wordpress-new' );
 
 /** Database username */
-define( 'DB_USER', 'root' );
+define( 'DB_USER', getenv( 'DB_USER' ) ?: 'root' );
 
 /** Database password */
-define( 'DB_PASSWORD', '' );
+define( 'DB_PASSWORD', getenv( 'DB_PASSWORD' ) ?: '' );
 
-/** Database hostname */
-define( 'DB_HOST', 'localhost' );
+/** Database hostname (puede incluir puerto: host:puerto) */
+define( 'DB_HOST', getenv( 'DB_HOST' ) ?: 'localhost' );
+
+/** Conexión SSL obligatoria (Aiven). Activar con DB_SSL=true */
+if ( getenv( 'DB_SSL' ) === 'true' ) {
+	define( 'MYSQL_CLIENT_FLAGS', MYSQLI_CLIENT_SSL );
+}
 
 /** Database charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8mb4' );
