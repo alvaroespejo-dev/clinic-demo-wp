@@ -1,0 +1,31 @@
+/* Global Style*/
+.wpdevart-pattern-main-headings-line:after {
+	content: '';
+    display: block;
+    width: 180px;
+    height: 1px;
+    margin: 0 auto;
+    margin-top: 7px;
+	background: #b3b3b3!important;
+}
+.wpdevart-patterns-bg {
+	background: #f7f7f7!important;
+	padding: 50px 0;
+}
+/* Call to Action */
+.call-to-action-gap-align {
+	gap: 0!important;
+	align-items: center!important;
+	padding-top: 40px;
+}
+.call-to-action-content {
+    padding: 0 10px 0 80px;
+}
+@media screen and (max-width: 781px) {
+	.call-to-action-content {
+		padding:0;
+	}
+}
+.wpdevart-sales-pattern-container .wp-block-columns:not(.is-not-stacked-on-mobile)>.wp-block-column {
+	flex-basis: fit-content!important;
+}
