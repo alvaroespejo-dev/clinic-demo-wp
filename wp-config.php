@@ -105,6 +105,12 @@ if ( getenv( 'WP_SITEURL' ) ) {
 	define( 'WP_SITEURL', getenv( 'WP_SITEURL' ) );
 }
 
+// Azure termina el HTTPS en su proxy: WordPress recibe HTTP y redirige wp-admin a sí mismo en bucle.
+// Si el proxy indica que la petición original era HTTPS, se le marca como tal.
+if ( isset( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) && 'https' === $_SERVER['HTTP_X_FORWARDED_PROTO'] ) {
+	$_SERVER['HTTPS'] = 'on';
+}
+
 
 
 /* That's all, stop editing! Happy publishing. */
