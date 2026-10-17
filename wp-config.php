@@ -95,6 +95,16 @@ define( 'WP_DEBUG', false );
 
 /* Add any custom values between this line and the "stop editing" line. */
 
+// URLs del sitio. Si están definidas, tienen prioridad sobre siteurl/home guardados en la BD
+// (esos valores vienen de XAMPP y hacen que wp-admin redirija a localhost en Azure).
+// En Azure se definen en las App Settings: WP_HOME y WP_SITEURL.
+if ( getenv( 'WP_HOME' ) ) {
+	define( 'WP_HOME', getenv( 'WP_HOME' ) );
+}
+if ( getenv( 'WP_SITEURL' ) ) {
+	define( 'WP_SITEURL', getenv( 'WP_SITEURL' ) );
+}
+
 
 
 /* That's all, stop editing! Happy publishing. */
